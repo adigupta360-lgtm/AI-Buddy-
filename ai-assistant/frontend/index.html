@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Buddy</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="chat-container">
+    <header>
+      <h1><span style="display:inline-block;animation:float 2.5s ease-in-out infinite;">💬</span> AI Buddy</h1>
+      <p>Your very own AI assistant</p>
+    </header>
+
+    <main id="chat-box"></main>
+
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
+      <button onclick="sendMessage()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/sent.png" alt="Send" />
+      </button>
+    </div>
+    <div style="text-align:center; margin-top:8px; font-size:0.95em; color:#eacda3; opacity:0.7;">
+      Press <b>Enter</b> to send
+    </div>
+  </div>
+
+  <svg style="position:fixed;z-index:-1;left:0;bottom:0;width:100vw;height:100vh;pointer-events:none;opacity:0.10;" viewBox="0 0 800 600"><defs><radialGradient id="g1" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#e6b980"/><stop offset="100%" stop-color="#eacda3"/></radialGradient></defs><ellipse cx="400" cy="600" rx="380" ry="120" fill="url(#g1)"/></svg>
+
+  <script src="script.js"></script>
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</body>
+</html>
