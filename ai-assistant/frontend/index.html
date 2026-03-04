@@ -3,38 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Buddy</title>
+  <title>Intraday Trade Hub</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="chat-container">
-    <header>
-      <h1><span style="display:inline-block;animation:float 2.5s ease-in-out infinite;">💬</span> AI Buddy</h1>
-      <p>Your very own AI assistant</p>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>📈 Intraday Trade Hub</h1>
+        <p>Live-style market pulse for high-conviction intraday setups</p>
+      </div>
+      <div class="market-status">
+        <span class="dot"></span>
+        Market Open · NSE/BSE Session
+      </div>
     </header>
 
-    <main id="chat-box"></main>
+    <section class="grid-layout">
+      <article class="panel chart-panel">
+        <div class="panel-head">
+          <h2>NIFTY 50 Momentum</h2>
+          <div class="chip">1m</div>
+        </div>
+        <canvas id="marketChart" width="900" height="300"></canvas>
+        <div class="stats-row" id="keyStats"></div>
+      </article>
 
-    <div class="input-area">
-      <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
-      <button onclick="sendMessage()">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/sent.png" alt="Send" />
-      </button>
-    </div>
-    <div style="text-align:center; margin-top:8px; font-size:0.95em; color:#eacda3; opacity:0.7;">
-      Press <b>Enter</b> to send
-    </div>
+      <article class="panel watchlist-panel">
+        <div class="panel-head">
+          <h2>Intraday Watchlist</h2>
+          <button id="refreshBtn" class="refresh-btn">Refresh</button>
+        </div>
+        <div id="watchlist"></div>
+      </article>
+
+      <article class="panel strategy-panel">
+        <h2>Trade Plan</h2>
+        <ul>
+          <li>Trade only first 2 breakouts after 9:30 AM confirmation.</li>
+          <li>Risk max 1% capital per trade with fixed stop-loss.</li>
+          <li>Prefer stocks with volume &gt; 1.8x average and clean trend.</li>
+          <li>Book partial profits at 1:1 and trail stop to VWAP/EMA-9.</li>
+        </ul>
+      </article>
+
+      <article class="panel calculator-panel">
+        <h2>Position Size Calculator</h2>
+        <label>Capital (₹)
+          <input id="capital" type="number" value="100000" min="1000" />
+        </label>
+        <label>Risk per Trade (%)
+          <input id="risk" type="number" value="1" min="0.1" step="0.1" />
+        </label>
+        <label>Stop Loss Distance (₹)
+          <input id="stopLoss" type="number" value="8" min="0.5" step="0.5" />
+        </label>
+        <button id="calcBtn">Calculate</button>
+        <p id="calcOutput">Enter values and calculate your quantity.</p>
+      </article>
+    </section>
   </div>
 
-  <svg style="position:fixed;z-index:-1;left:0;bottom:0;width:100vw;height:100vh;pointer-events:none;opacity:0.10;" viewBox="0 0 800 600"><defs><radialGradient id="g1" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#e6b980"/><stop offset="100%" stop-color="#eacda3"/></radialGradient></defs><ellipse cx="400" cy="600" rx="380" ry="120" fill="url(#g1)"/></svg>
-
   <script src="script.js"></script>
-  <style>
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-  </style>
 </body>
 </html>
